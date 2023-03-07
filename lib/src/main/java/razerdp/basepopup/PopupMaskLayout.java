@@ -55,7 +55,7 @@ class PopupMaskLayout extends FrameLayout implements BasePopupEvent.EventObserve
             setBackgroundColor(Color.TRANSPARENT);
             return;
         }
-        if (!mHelper.overlayMask && mHelper.isPrePopupBackgroundExists()) {
+        if (!mHelper.overlayMask && mHelper.isPrevPopupBackgroundExists()) {
             setBackgroundColor(Color.TRANSPARENT);
             return;
         }
@@ -68,7 +68,7 @@ class PopupMaskLayout extends FrameLayout implements BasePopupEvent.EventObserve
             mBackgroundViewHolder = new BackgroundViewHolder(mHelper.getBackgroundView(), mHelper);
         } else {
             if (!PopupUtils.isBackgroundInvalidated(mHelper.getPopupBackground())) {
-                mBackgroundViewHolder = new BackgroundViewHolder(PopupBackgroundView.creaete(context,
+                mBackgroundViewHolder = new BackgroundViewHolder(PopupBackgroundView.create(context,
                                                                                              mHelper),
                                                                  mHelper);
             }

@@ -32,7 +32,7 @@ class PopupBackgroundView extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    public static PopupBackgroundView creaete(Context context, BasePopupHelper helper) {
+    public static PopupBackgroundView create(Context context, BasePopupHelper helper) {
         PopupBackgroundView view = new PopupBackgroundView(context);
         view.init(context, helper);
         return view;
@@ -54,11 +54,7 @@ class PopupBackgroundView extends View {
 
     public void update() {
         if (mHelper != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                setBackground(mHelper.getPopupBackground());
-            } else {
-                setBackgroundDrawable(mHelper.getPopupBackground());
-            }
+            setBackground(mHelper.getPopupBackground());
         }
     }
 }

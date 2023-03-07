@@ -1249,7 +1249,7 @@ final class BasePopupHelper implements KeyboardUtils.OnKeyboardChangeListener, B
         }
     }
 
-    boolean isPrePopupBackgroundExists() {
+    boolean isPrevPopupBackgroundExists() {
         if (mPopupWindow == null) return false;
         LinkedList<WindowManagerProxy> popupList = WindowManagerProxy.PopupWindowQueueManager.getInstance()
                 .getPopupList(mPopupWindow.getContext());

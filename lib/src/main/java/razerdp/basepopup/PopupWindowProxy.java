@@ -3,7 +3,6 @@ package razerdp.basepopup;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -38,7 +37,7 @@ class PopupWindowProxy extends PopupWindow implements ClearMemoryObject {
         mBasePopupContextWrapper = context;
         setFocusable(true);
         setOutsideTouchable(true);
-        setBackgroundDrawable(new ColorDrawable());
+        setBackgroundDrawable(null);
         setInputMethodMode(PopupWindow.INPUT_METHOD_NEEDED);
     }
 
@@ -145,7 +144,7 @@ class PopupWindowProxy extends PopupWindow implements ClearMemoryObject {
         if (mBasePopupContextWrapper == null || mBasePopupContextWrapper.mWindowManagerProxy == null) {
             return null;
         }
-        return mBasePopupContextWrapper.mWindowManagerProxy.preWindow();
+        return mBasePopupContextWrapper.mWindowManagerProxy.prevWindow();
     }
 
     @Override

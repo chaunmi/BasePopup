@@ -146,11 +146,7 @@ public class PopupUiUtils {
 
     public static void setBackground(View v, Drawable background) {
         if (v == null) return;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            v.setBackground(background);
-        } else {
-            v.setBackgroundDrawable(background);
-        }
+        v.setBackground(background);
     }
 
     public static void safeAddGlobalLayoutListener(View v, ViewTreeObserver.OnGlobalLayoutListener listener) {

@@ -49,7 +49,7 @@ public class PopupUtils {
      */
     public static boolean isBackgroundInvalidated(Drawable drawable) {
         return drawable == null
-                || (drawable instanceof ColorDrawable) && ((ColorDrawable) drawable).getColor() == Color.TRANSPARENT;
+                || ((drawable instanceof ColorDrawable) && ((ColorDrawable) drawable).getColor() == Color.TRANSPARENT);
     }
 
 

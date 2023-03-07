@@ -1,9 +1,13 @@
 package razerdp.demo.ui;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -11,6 +15,8 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
+
+import razerdp.basepopup.BasePopupWindow;
 import razerdp.basepopup.R;
 import razerdp.basepopup.databinding.ActivityCommonUsageBinding;
 import razerdp.demo.base.baseactivity.BaseBindingActivity;
@@ -101,10 +107,23 @@ public class CommonUsageActivity extends BaseBindingActivity<ActivityCommonUsage
                 }
                 if (data instanceof DemoCommonUsageInfo) {
                     ((DemoCommonUsageInfo) data).toShow(v);
+                //    showPopupWindow();
                 }
             }
         });
         mBinding.rvContent.setAdapter(mAdapter);
+
+    }
+
+    private void showPopupWindow() {
+        View contentView = LayoutInflater.from(this).inflate(R.layout.popup_slide, null);
+        PopupWindow popupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        View decorView = getWindow().getDecorView();
+        popupWindow.setBackgroundDrawable(new ColorDrawable(BasePopupWindow.DEFAULT_BACKGROUND_COLOR));
+        popupWindow.setOutsideTouchable(true);
+
+
+        popupWindow.showAtLocation(decorView, Gravity.TOP, 0,0);
 
     }
 

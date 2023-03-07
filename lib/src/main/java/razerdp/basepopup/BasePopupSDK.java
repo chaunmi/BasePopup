@@ -12,7 +12,7 @@ import java.lang.ref.WeakReference;
 /**
  * Created by 大灯泡 on 2019/5/13
  * <p>
- * Description：
+ * Description：该类主要用于处理无context的异常情况
  */
 public final class BasePopupSDK {
 
@@ -24,6 +24,10 @@ public final class BasePopupSDK {
         private static final BasePopupSDK INSTANCE = new BasePopupSDK();
     }
 
+    /**
+     * 主要是application启动时的弹窗，此时activity可能还没创建好
+     * @param observer
+     */
     void regFirstActivityOpen(Observer<Boolean> observer) {
         if (firstActivityOpenLiveData == null) {
             firstActivityOpenLiveData = new FirstOpenActivityLiveData<>();

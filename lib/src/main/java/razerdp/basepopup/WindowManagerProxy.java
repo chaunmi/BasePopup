@@ -210,8 +210,8 @@ final class WindowManagerProxy implements WindowManager, ClearMemoryObject {
     }
 
     @Nullable
-    WindowManagerProxy preWindow() {
-        return PopupWindowQueueManager.getInstance().preWindow(this);
+    WindowManagerProxy prevWindow() {
+        return PopupWindowQueueManager.getInstance().prevWindow(this);
     }
 
     void dispatchToDecorProxy(MotionEvent ev) {
@@ -220,6 +220,9 @@ final class WindowManagerProxy implements WindowManager, ClearMemoryObject {
         }
     }
 
+    /**
+     * 用于管理弹出多层popupWindow的情况
+     */
     static class PopupWindowQueueManager {
 
         static final HashMap<String, LinkedList<WindowManagerProxy>> sQueueMap = new HashMap<>();
@@ -285,8 +288,13 @@ final class WindowManagerProxy implements WindowManager, ClearMemoryObject {
             PopupLog.d(TAG, queue, sQueueMap);
         }
 
+        /**
+         * 获取前一个window
+         * @param managerProxy
+         * @return
+         */
         @Nullable
-        WindowManagerProxy preWindow(WindowManagerProxy managerProxy) {
+        WindowManagerProxy prevWindow(WindowManagerProxy managerProxy) {
             if (managerProxy == null) {
                 return null;
             }
